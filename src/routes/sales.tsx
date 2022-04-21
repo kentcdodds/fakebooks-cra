@@ -1,9 +1,12 @@
 import * as React from "react";
 import { NavLink, Outlet, useMatch } from "react-router-dom";
 import { InvoiceListItem } from "types";
-import { useAsync } from "../utils";
+import { Spinner, useAsync } from "../utils";
 
-type LoaderData = { invoiceListItems: Array<InvoiceListItem> };
+type LoaderData = {
+  invoiceListItems: Array<InvoiceListItem>;
+  experiments: Record<string, boolean>;
+};
 
 const linkClassName = ({ isActive }: { isActive: boolean }) =>
   isActive ? "font-bold text-black" : "";
@@ -11,12 +14,42 @@ const linkClassName = ({ isActive }: { isActive: boolean }) =>
 export default function SalesRouteLoader() {
   const { run, status, error, data } = useAsync<LoaderData>();
   React.useEffect(() => {
-    run(fetch("http://localhost:3000/api/v1/invoice").then((r) => r.json()));
+    run(
+      Promise.all([
+        fetch("http://localhost:3000/api/v1/invoice").then((r) => r.json()),
+        fetch("http://localhost:3000/api/v1/experiments").then((r) => r.json()),
+      ]).then(([invoice, experiments]) => {
+        return {
+          ...invoice,
+          ...experiments,
+        };
+      })
+    );
   }, [run]);
   switch (status) {
     case "idle":
     case "pending": {
-      return <img src="/loading.gif" alt="" />;
+      return (
+        <div className="relative h-full p-10">
+          <div className="font-display text-d-h3 text-black">Sales</div>
+          <div className="h-6" />
+          <div className="flex gap-4 border-b border-gray-100 pb-4 text-[length:14px] font-medium text-gray-400">
+            <div className="w-1/3 bg-gray-300 rounded animate-pulse">
+              &nbsp;
+            </div>
+            <div className="w-1/3 bg-gray-300 rounded animate-pulse">
+              &nbsp;
+            </div>
+            <div className="w-1/3 bg-gray-300 rounded animate-pulse">
+              &nbsp;
+            </div>
+          </div>
+          <div className="h-4" />
+          <div className="h-[6rem]">
+            <Spinner className="p-8" />
+          </div>
+        </div>
+      );
     }
     case "rejected": {
       throw error;
@@ -51,9 +84,11 @@ function SalesRoute({ data }: { data: LoaderData }) {
         >
           Invoices
         </NavLink>
-        <NavLink to="customers" className={linkClassName}>
-          Customers
-        </NavLink>
+        {data.experiments.customers ? (
+          <NavLink to="customers" className={linkClassName}>
+            Customers
+          </NavLink>
+        ) : null}
         <NavLink to="deposits" className={linkClassName}>
           Deposits
         </NavLink>

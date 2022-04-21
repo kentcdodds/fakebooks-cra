@@ -2,7 +2,7 @@ import * as React from "react";
 import { useParams } from "react-router-dom";
 import { LabelText } from "components";
 import { Invoice } from "types";
-import { getInvoiceDue, useAsync } from "utils";
+import { getInvoiceDue, Spinner, useAsync } from "utils";
 
 type LoaderData = {
   invoice: Invoice;
@@ -21,7 +21,11 @@ export default function InvoiceRouteLoader() {
   switch (status) {
     case "idle":
     case "pending": {
-      return <img src="/loading.gif" alt="" />;
+      return (
+        <div className="h-64">
+          <Spinner className="p-12" />
+        </div>
+      );
     }
     case "rejected": {
       throw error;

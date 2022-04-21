@@ -165,3 +165,15 @@ export class ErrorBoundary extends React.Component<
     return this.props.children;
   }
 }
+
+export function Spinner({ className }: { className?: string }) {
+  return (
+    <div className={`h-full w-full ${className ?? ""}`}>
+      <img
+        src="/loading.gif"
+        className="object-contain object-top w-full h-full"
+        alt=""
+      />
+    </div>
+  );
+}

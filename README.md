@@ -1,46 +1,14 @@
-# Getting Started with Create React App
+# CRA Fakebooks App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a (very) simple implementation of the fakebooks mock app demonstrated on [remix.run](https://remix.run). The backend is served by [the Remix version of this app](https://github.com/kentcdodds/fakebooks-remix). There is no database, but there is an arbitrary delay of 40-100ms whenever accessing "invoice data" to simulate querying a real database.
 
-## Available Scripts
+This inteded to be used as an example of a fairly standard client-rendered app as a comparison to a Remix app. The sister repo to this one can be found at [kentcdodds/fakebooks-remix](https://github.com/kentcdodds/fakebooks-remix).
 
-In the project directory, you can run:
+- [Fakebooks Remix Production Deploy](https://fakebooks-remix-1b16.fly.dev) - Deployed on Fly in the Dallas Region
+- [Fakebooks CRA Production Deploy](https://fakebooks-cra.netlify.app) - Deployed on Netlify's global CDN
 
-### `npm start`
+The main objective of this comparison (currently) is to demonstrate the UX and DX difference between the two approaches in regards to data loading. Test out the initial page load as well as switching between different pages.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Please do dig into the code and compare the level of complexity. Keep in mind that a CRA app is only half the story. You need a backend. This Remix app's backend is used to handle that for the CRA version.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Another thing to keep in mind is that this app doesn't handle mutations (yet?). Adding mutation support would drastically complicate the CRA implementation, but would be a pretty simple thing to handle for Remix.

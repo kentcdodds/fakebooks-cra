@@ -1,5 +1,6 @@
 import * as React from "react";
 import { Link, NavLink, Route, Routes } from "react-router-dom";
+import { Spinner } from "utils";
 
 const Index = React.lazy(() => import("./routes/index"));
 const Dashboard = React.lazy(() => import("./routes/dashboard"));
@@ -16,7 +17,13 @@ const InvoicesIndex = React.lazy(() => import("./routes/sales/invoices/index"));
 const Invoice = React.lazy(() => import("./routes/sales/invoices/$invoiceId"));
 
 const Spinnit = ({ children }: { children: React.ReactNode }) => (
-  <React.Suspense fallback={<img src="/loading.gif" alt="" />}>
+  <React.Suspense fallback={<Spinner className="p-32" />}>
+    {children}
+  </React.Suspense>
+);
+
+const SmallSpinnit = ({ children }: { children: React.ReactNode }) => (
+  <React.Suspense fallback={<Spinner className="p-8 h-[6rem]" />}>
     {children}
   </React.Suspense>
 );
@@ -102,25 +109,25 @@ export default function App() {
               <Route
                 path="invoices"
                 element={
-                  <Spinnit>
+                  <SmallSpinnit>
                     <Invoices />
-                  </Spinnit>
+                  </SmallSpinnit>
                 }
               >
                 <Route
                   path=":invoiceId"
                   element={
-                    <Spinnit>
+                    <SmallSpinnit>
                       <Invoice />
-                    </Spinnit>
+                    </SmallSpinnit>
                   }
                 />
                 <Route
                   index
                   element={
-                    <Spinnit>
+                    <SmallSpinnit>
                       <InvoicesIndex />
-                    </Spinnit>
+                    </SmallSpinnit>
                   }
                 />
               </Route>
