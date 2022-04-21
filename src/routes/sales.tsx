@@ -16,8 +16,12 @@ export default function SalesRouteLoader() {
   React.useEffect(() => {
     run(
       Promise.all([
-        fetch("http://localhost:3000/api/v1/invoice").then((r) => r.json()),
-        fetch("http://localhost:3000/api/v1/experiments").then((r) => r.json()),
+        fetch(`${process.env.REACT_APP_API_URL}v1/invoice`).then((r) =>
+          r.json()
+        ),
+        fetch(`${process.env.REACT_APP_API_URL}v1/experiments`).then((r) =>
+          r.json()
+        ),
       ]).then(([invoice, experiments]) => {
         return {
           ...invoice,

@@ -7,7 +7,9 @@ export default function CustomersRouteLoader() {
   const { run, status, error, data } = useAsync<LoaderData>();
   React.useEffect(() => {
     run(
-      fetch(`http://localhost:3000/api/v1/experiments`).then((r) => r.json())
+      fetch(`${process.env.REACT_APP_API_URL}v1/experiments`).then((r) =>
+        r.json()
+      )
     );
   }, [run]);
   switch (status) {

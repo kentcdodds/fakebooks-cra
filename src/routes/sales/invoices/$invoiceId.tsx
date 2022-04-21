@@ -13,9 +13,9 @@ export default function InvoiceRouteLoader() {
   const { run, status, error, data } = useAsync<LoaderData>();
   React.useEffect(() => {
     run(
-      fetch(`http://localhost:3000/api/v1/invoice/${params.invoiceId}`).then(
-        (r) => r.json()
-      )
+      fetch(
+        `${process.env.REACT_APP_API_URL}v1/invoice/${params.invoiceId}`
+      ).then((r) => r.json())
     );
   }, [run, params.invoiceId]);
   switch (status) {
