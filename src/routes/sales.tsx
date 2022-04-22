@@ -69,7 +69,7 @@ export default function SalesRouteLoader() {
 
 function SalesRoute({ data }: { data: LoaderData }) {
   const indexMatches = Boolean(useMatch("/sales"));
-  const invoiceMatches = Boolean(useMatch("/sales/invoices"));
+  const invoiceMatches = Boolean(useMatch("/sales/invoices/*"));
   const firstInvoiceId = data.invoiceListItems?.[0].id;
   return (
     <div className="relative h-full p-10">
