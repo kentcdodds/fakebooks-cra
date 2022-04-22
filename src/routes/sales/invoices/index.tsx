@@ -12,7 +12,7 @@ export default function InvoiceIndex() {
   const [firstListItem] = salesContext.invoiceListItems;
   const mounted = React.useRef<Boolean>(false);
 
-  React.useLayoutEffect(() => {
+  React.useEffect(() => {
     if (mounted.current) return;
     mounted.current = true;
     if (hasListItems) {
