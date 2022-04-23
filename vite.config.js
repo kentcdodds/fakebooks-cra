@@ -1,9 +1,9 @@
-/* eslint-disable */
-import legacyPlugin from "@vitejs/plugin-legacy";
 import * as path from "path";
-import reactRefresh from "@vitejs/plugin-react-refresh";
+import react from "@vitejs/plugin-react";
+
 // @see https://vitejs.dev/config/
-export default ({ command, mode }) => {
+// eslint-disable-next-line import/no-anonymous-default-export
+export default ({ command }) => {
   let rollupOptions = {};
 
   let optimizeDeps = {};
@@ -51,19 +51,7 @@ export default ({ command, mode }) => {
     },
     esbuild,
     optimizeDeps,
-    plugins: [
-      legacyPlugin({
-        targets: [
-          "Android > 39",
-          "Chrome >= 60",
-          "Safari >= 10.1",
-          "iOS >= 10.3",
-          "Firefox >= 54",
-          "Edge >= 15",
-        ],
-      }),
-      reactRefresh(),
-    ],
+    plugins: [react()],
     css: {
       preprocessorOptions: {
         less: {
