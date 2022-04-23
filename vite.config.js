@@ -10,6 +10,8 @@ export default ({ command, mode }) => {
 
   let alias = {
     routes: path.resolve(__dirname, "./src/routes"),
+    utils: path.resolve(__dirname, "./src/utils"),
+    components: path.resolve(__dirname, "./src/components"),
     "react-native": "react-native-web",
   };
 
