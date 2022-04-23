@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <link rel="apple-touch-icon" href="/logo192.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="preconnect" href="https://fakebooks-remix.fly.dev" />
+    <style>
+      /* Critical CSS */
+      .initial-loading-indicator {
+        height: 100%;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+      }
+      .initial-loading-indicator img {
+        max-height: 400px;
+      }
+      body {
+        /* tailwind does this, but if we don't have it then the loading spinner
+        will get bumped once tailwind loads. */
+        margin: 0;
+      }
+    </style>
+    <title>Fakebooks CRA</title>
+  </head>
+<body>
+<div id="root"></div>
+<script type="module" src="/src/index.tsx"></script>
+</body>
+</html>
