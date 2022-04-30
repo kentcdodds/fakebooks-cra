@@ -2,7 +2,7 @@
 
 This is a (very) simple implementation of the fakebooks mock app demonstrated on [remix.run](https://remix.run). The backend is served by [the Remix version of this app](https://github.com/kentcdodds/fakebooks-remix). There is no database, but there is an arbitrary delay of 40-100ms whenever accessing "invoice data" to simulate querying a real database.
 
-This inteded to be used as an example of a fairly standard client-rendered app as a comparison to a Remix app. The sister repo to this one can be found at [kentcdodds/fakebooks-remix](https://github.com/kentcdodds/fakebooks-remix).
+This is intended to be used as an example of a fairly standard client-rendered app as a comparison to a Remix app. The sister repo to this one can be found at [kentcdodds/fakebooks-remix](https://github.com/kentcdodds/fakebooks-remix).
 
 - [Fakebooks Remix Production Deploy](https://fakebooks-remix.fly.dev/sales/invoices) - Deployed on Fly in the Dallas Region
 - [Fakebooks CRA Production Deploy](https://fakebooks-cra.netlify.app/sales/invoices) - Deployed on Netlify's global CDN
